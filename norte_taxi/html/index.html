@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Norte Taxi</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="style.css">
+<!-- O mapa 3D do WHIP (whip_core/html/js/map3d/map3d.js) importa "three" por este nome -->
+<script type="importmap">
+{ "imports": { "three": "https://cfx-nui-whip_core/html/js/vehicle_hud/vendor/three.module.min.js" } }
+</script>
+</head>
+<body>
+
+<div class="busy-bar" id="busy"></div>
+
+<!-- ===================================================================
+     TÁXI · Immersive · 04 Immersive selection
+     O mapa ocupa o ecrã no lugar da câmara; a lista à esquerda.
+     =================================================================== -->
+<main class="taxi" id="taxi" hidden>
+  <div class="map" id="map">
+    <canvas class="map-canvas" id="mapCanvas"></canvas>
+    <div class="map-grid" id="mapGrid" hidden></div>
+    <div class="marks" id="marks">
+      <div class="me-mark" id="meMark"><svg viewBox="0 0 24 24"><path d="M12 2.5 19.5 20.5 12 16.6 4.5 20.5Z"/></svg></div>
+      <div class="pin" id="pin" hidden><span class="pin-ring"><span class="pin-dot"></span></span></div>
+    </div>
+  </div>
+  <div class="shade"></div>
+
+  <div class="map-state rise" id="mapState" hidden>
+    <span class="dot" id="mapStateDot"></span>
+    <span class="t-small" id="mapStateText">Loading map</span>
+  </div>
+
+  <section class="col col-left">
+    <header class="page-head rise" style="--i:0">
+      <nav class="breadcrumb t-micro"><span>Norte</span><span class="breadcrumb-sep">/</span><span>Self-driving taxi</span></nav>
+      <h1 class="t-title page-title">Taxi</h1>
+      <p class="t-small page-sub" id="sub">Pick a destination from the list or click the map.</p>
+    </header>
+
+    <article class="card list-card rise" style="--i:1">
+      <div class="section-header">
+        <span class="t-row-title">Destinations</span>
+        <span class="section-line"></span>
+        <span class="t-micro" id="destMeta">0 places</span>
+      </div>
+      <div class="rows" id="rows"></div>
+      <div class="state state-boxed" id="rowsEmpty" hidden>
+        <span class="t-row-title">No quick destinations</span>
+        <span class="t-small muted">Click the map to mark where you want to go.</span>
+      </div>
+    </article>
+
+    <article class="card rise" style="--i:2">
+      <div class="section-header">
+        <span class="t-row-title">Ride</span>
+        <span class="section-line"></span>
+        <span class="t-micro" id="tripMeta">No destination</span>
+      </div>
+      <div class="cells">
+        <div class="cell cell-wide"><span class="t-micro">Destination</span><span class="t-value cell-value" id="cellDest">—</span></div>
+        <div class="cell"><span class="t-micro">Distance</span><span class="t-value cell-value" id="cellDist">—</span></div>
+        <div class="cell"><span class="t-micro">Estimated time</span><span class="t-value cell-value" id="cellEta">—</span></div>
+      </div>
+    </article>
+  </section>
+
+  <div class="col-foot rise" style="--i:3">
+    <button class="btn btn-ghost btn-m" id="stopBtn" hidden><span>Stop here</span></button>
+    <button class="btn btn-primary btn-l" id="goBtn" disabled><span id="goLabel">Go to destination</span></button>
+  </div>
+
+  <footer class="hints rise" style="--i:4">
+    <span class="hint"><span class="key">Click</span><span class="t-micro">Mark destination</span></span>
+    <span class="hint"><span class="key">Drag</span><span class="t-micro">Move map</span></span>
+    <span class="hint"><span class="key">Wheel</span><span class="t-micro">Zoom</span></span>
+    <span class="hint"><span class="key">Enter</span><span class="t-micro">Confirm</span></span>
+    <span class="hint"><span class="key">Esc</span><span class="t-micro">Close</span></span>
+  </footer>
+
+  <div class="toasts" id="toasts"></div>
+</main>
+
+<!-- ===================================================================
+     MAIS RÁPIDO · World · 10 World interaction
+     Durante a viagem, no canto inferior direito, sem tirar o controlo ao jogador.
+     =================================================================== -->
+<div class="world-hint" id="hint" hidden>
+  <div class="world-hint-text">
+    <span class="t-row-title" id="hintLabel">Faster</span>
+    <span class="t-micro" id="hintSub">Obeys traffic lights</span>
+  </div>
+  <span class="t-value world-hint-price" id="hintPrice">$20</span>
+  <span class="key world-hint-key" id="hintKey">E</span>
+</div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>

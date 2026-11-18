@@ -1,0 +1,123 @@
+/*
+    NorteRoleplay Design System v3.0 - tokens
+    Source of truth: Figma file "NorteRoleplay | FivemServer", pages 00 to 05,
+    variable collections "NRP · Primitives", "NRP · Semantic", "NRP · Dimensions".
+    A change in Figma must be repeated here by hand or by an agent.
+
+    Unit: 1rem = 1px at the reference width. Set the html font-size from script:
+      tablet / DUI (1280 wide)   html { font-size: calc(100vw / 1280); }
+      fullscreen (1920 x 1080)   html { font-size: calc(100vh / 1080); }
+*/
+
+/* SF Pro, served by norte_map3d. One family, width chosen with font-stretch. */
+@font-face { font-family: 'SF'; src: url('https://cfx-nui-norte_whip_theme/fonts/sf-regular-17.ttf'); font-weight: 400; font-stretch: normal; }
+@font-face { font-family: 'SF'; src: url('https://cfx-nui-norte_whip_theme/fonts/sf-medium-17.ttf'); font-weight: 500; font-stretch: normal; }
+@font-face { font-family: 'SF'; src: url('https://cfx-nui-norte_whip_theme/fonts/sf-semibold-17.ttf'); font-weight: 600 700; font-stretch: normal; }
+@font-face { font-family: 'SF'; src: url('https://cfx-nui-norte_whip_theme/fonts/sf-compressed-regular-17.ttf'); font-weight: 400; font-stretch: extra-condensed; }
+@font-face { font-family: 'SF'; src: url('https://cfx-nui-norte_whip_theme/fonts/sf-compressed-medium-17.ttf'); font-weight: 500 700; font-stretch: extra-condensed; }
+
+:root {
+    /* brand: highlight only, never the main button */
+    --accent: #95b8ce;
+    --accent-ink: #2f5d78;                      /* accent text on a light fill */
+    --focus-ring: rgba(149, 184, 206, 0.18);
+
+    /* surfaces (Figma surface/*) */
+    --base: #1b1e21;                            /* surface/app, veil top */
+    --base-deep: #16191c;                       /* veil bottom */
+    --panel: rgba(34, 38, 42, 0.96);            /* surface/panel: cards, header, sidebar, popovers */
+    --cell: rgba(40, 44, 48, 0.96);             /* surface/cell: info cells, tags, thumbnails */
+    --row: rgba(45, 50, 55, 0.96);              /* surface/row: rows, tabs off */
+    --input: rgba(255, 255, 255, 0.04);         /* surface/input: inputs, ghost buttons */
+    --input-focus: rgba(255, 255, 255, 0.08);
+    --light: #f4f5f6;                           /* surface/inverse: action color, hover, selected, key caps */
+    --white: #ffffff;                           /* button hover */
+    --scrim: rgba(11, 13, 15, 0.8);
+    --over-image: rgba(0, 0, 0, 0.6);
+
+    /* text (Figma text/*) */
+    --text: #f4f5f6;
+    --soft: #c9ced3;
+    --muted: #8e8e93;
+    --placeholder: rgba(255, 255, 255, 0.4);
+    --dark: #1b1e21;                            /* text on --light and --accent */
+    --ink-muted: #3d434a;                       /* secondary text on --light */
+
+    /* borders (Figma border/*) */
+    --line: rgba(255, 255, 255, 0.10);
+    --line-input: rgba(255, 255, 255, 0.16);
+    --line-hi: rgba(255, 255, 255, 0.22);
+    --track: rgba(255, 255, 255, 0.16);         /* progress and slider track */
+
+    /* status: for status only */
+    --ok: #7bd88f;
+    --ok-ink: #1c7a34;
+    --ok-subtle: rgba(123, 216, 143, 0.2);
+    --warn: #e6b450;
+    --warn-subtle: rgba(230, 180, 80, 0.2);
+    --bad: #e5484d;
+    --bad-subtle: rgba(229, 72, 77, 0.2);
+
+    /* shape */
+    --radius: 6rem;                             /* buttons, inputs, cards, rows */
+    --radius-sm: 4rem;                          /* tags, key caps, thumbnails */
+    --radius-round: 999rem;                     /* avatars, dots, toggles, swatches, slider thumb */
+
+    /* spacing scale (Figma space/*) */
+    --s-2: 2rem; --s-3: 3rem; --s-4: 4rem; --s-5: 5rem; --s-6: 6rem; --s-8: 8rem; --s-10: 10rem;
+    --s-12: 12rem; --s-14: 14rem; --s-16: 16rem; --s-18: 18rem; --s-22: 22rem; --s-24: 24rem; --s-30: 30rem;
+
+    /* control heights (Figma size/*) */
+    --h-tag: 24rem; --h-chip: 30rem; --h-sm: 32rem; --h-tab: 38rem; --h-control: 44rem; --h-lg: 54rem;
+    --h-header: 92rem; --h-footer: 36rem;
+
+    /* elevation: floating elements only */
+    --shadow-card: 0 6rem 18rem rgba(0, 0, 0, 0.6);
+    --shadow-raised: 0 14rem 30rem rgba(0, 0, 0, 0.75);
+    --shadow-modal: 0 20rem 60rem rgba(0, 0, 0, 0.8);
+
+    /* motion: only opacity, transform, color, background-color, border-color */
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --t-fast: 0.12s;                            /* hover, press */
+    --t-base: 0.18s;                            /* focus, switch */
+    --t-enter: 0.3s;                            /* view entry */
+    --t-stagger: 0.03s;
+
+    --sf: 'SF', -apple-system, 'Segoe UI', Arial, sans-serif;
+}
+
+/* ---------------------------------------------------------------- base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { color: var(--text); font: 400 extra-condensed 21rem/1.2 var(--sf); letter-spacing: 0.3rem; user-select: none; -webkit-font-smoothing: antialiased; }
+button, input, textarea { font: inherit; letter-spacing: inherit; color: inherit; }
+svg { display: block; fill: currentColor; }
+::-webkit-scrollbar { width: 6rem; height: 6rem; }
+::-webkit-scrollbar-track { border-radius: 3rem; background: rgba(255, 255, 255, 0.05); }
+::-webkit-scrollbar-thumb { border-radius: 3rem; background: rgba(255, 255, 255, 0.28); }
+html.lite *, html.lite *::before, html.lite *::after { animation: none !important; transition: none !important; }
+
+/* ---------------------------------------------------------------- type (Figma text styles NRP/*) */
+/* italic: page titles and values only */
+.t-display     { font: italic 500 extra-condensed 58rem/1 var(--sf); text-transform: uppercase; }                          /* Display/Number */
+.t-hero        { font: 500 extra-condensed 78rem/0.85 var(--sf); letter-spacing: 2rem; text-transform: uppercase; }        /* Display/Hero */
+.t-title       { font: italic 500 extra-condensed 50rem/1 var(--sf); letter-spacing: 0.6rem; text-transform: uppercase; }  /* Title/Page */
+.t-brand       { font: italic 500 extra-condensed 46rem/1 var(--sf); letter-spacing: 0.8rem; text-transform: uppercase; }  /* Title/Brand */
+.t-section     { font: 500 extra-condensed 30rem/1.05 var(--sf); letter-spacing: 0.6rem; text-transform: uppercase; }      /* Title/Section */
+.t-row-title   { font: 500 extra-condensed 21rem/1 var(--sf); letter-spacing: 1rem; text-transform: uppercase; }           /* Title/Row, section header title */
+.t-value-xl    { font: italic 500 extra-condensed 40rem/1 var(--sf); font-variant-numeric: tabular-nums; text-transform: uppercase; } /* Numeric/XL */
+.t-value       { font: italic 500 extra-condensed 21rem/1 var(--sf); letter-spacing: 0.3rem; }                             /* Value/M */
+.t-num-l       { font: 500 extra-condensed 24rem/1 var(--sf); font-variant-numeric: tabular-nums; }                        /* Numeric/L */
+.t-num         { font: 500 extra-condensed 21rem/1 var(--sf); font-variant-numeric: tabular-nums; }                        /* Numeric/M */
+.t-over        { color: var(--muted); font: 500 extra-condensed 17rem/1 var(--sf); letter-spacing: 1rem; text-transform: uppercase; }   /* Label/Overline */
+.t-micro       { color: var(--muted); font: 500 extra-condensed 14rem/1 var(--sf); letter-spacing: 1rem; text-transform: uppercase; }   /* Label/Micro */
+.t-tag         { font: 500 extra-condensed 17rem/1 var(--sf); letter-spacing: 0.8rem; text-transform: uppercase; }         /* Label/Tag */
+.t-tab         { font: 500 extra-condensed 21rem/1 var(--sf); letter-spacing: 0.9rem; text-transform: uppercase; }         /* Tab */
+.t-btn-l       { font: 500 extra-condensed 26rem/1 var(--sf); letter-spacing: 1rem; text-transform: uppercase; }           /* Button/L */
+.t-btn         { font: 500 extra-condensed 21rem/1 var(--sf); letter-spacing: 1rem; text-transform: uppercase; }           /* Button/M */
+.t-btn-s       { font: 500 extra-condensed 18rem/1 var(--sf); letter-spacing: 0.8rem; text-transform: uppercase; }         /* Button/S */
+.t-row         { font: 500 extra-condensed 23rem/1.05 var(--sf); }                                                         /* Body/Row */
+.t-strong      { font: 500 extra-condensed 21rem/1.2 var(--sf); }                                                          /* Body/Strong */
+.t-body        { font: 400 extra-condensed 21rem/1.2 var(--sf); }                                                          /* Body/Base */
+.t-small       { font: 400 extra-condensed 17rem/1.1 var(--sf); }                                                          /* Body/S */
+.t-xs          { font: 400 extra-condensed 15rem/1 var(--sf); }                                                            /* Body/XS */
+.t-prose       { font: 400 normal 16rem/1.5 var(--sf); letter-spacing: 0; }                                                /* Prose/M: long text only */
